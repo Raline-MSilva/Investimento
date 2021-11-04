@@ -9,8 +9,8 @@ import java.util.List;
 public class InvestimentoService {
     private List<InvestimentoDTO> investidores = new ArrayList<>();
 
-    public void cadastrarInvestimento(InvestimentoDTO investidor) {
-        investidores.add(investidor);
+    public void cadastrarInvestimento(InvestimentoDTO investimento) {
+        investidores.add(investimento);
     }
 
     public List<InvestimentoDTO> retornarInvestimentos() {

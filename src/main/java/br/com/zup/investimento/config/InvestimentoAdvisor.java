@@ -20,7 +20,7 @@ public class InvestimentoAdvisor {
         List<MensagemDeErroDTO> mensagens = new ArrayList<>();
 
         for (FieldError fieldError : exception.getFieldErrors()){
-            mensagens.add(new MensagemDeErroDTO(fieldError.getDefaultMessage(), fieldError.getField()));
+            mensagens.add(new MensagemDeErroDTO(fieldError.getDefaultMessage()));
         }
 
         return mensagens;
@@ -29,6 +29,6 @@ public class InvestimentoAdvisor {
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MensagemDeErroDTO mensagem(RuntimeException exception){
-        return new MensagemDeErroDTO("Risco não encontrado", "");
+        return new MensagemDeErroDTO("Risco não encontrado");
     }
 }
