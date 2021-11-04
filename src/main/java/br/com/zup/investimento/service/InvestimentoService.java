@@ -19,7 +19,7 @@ public class InvestimentoService {
     }
 
     public double calcularValorTotal (InvestimentoDTO investidor){
-        double calculo = investidor.getPeriodoDeAplicacaoMeses() * (investidor.getTipoDeRisco().getTaxaDeRetorno());
+        double calculo = investidor.getPeriodoDeAplicacaoMeses() + investidor.getValorInvestido();
         return calculo;
     }
 }
