@@ -22,4 +22,9 @@ public class InvestimentoService {
         double calculo = investidor.getPeriodoDeAplicacaoMeses() + investidor.getValorInvestido();
         return calculo;
     }
+
+    public double calculaLucro (InvestimentoDTO investidor){
+        double lucro = investidor.getPeriodoDeAplicacaoMeses() * (investidor.getTipoDeRisco().getTaxaDeRetorno());
+        return lucro;
+    }
 }
