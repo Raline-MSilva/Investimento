@@ -13,4 +13,8 @@ public class InvestimentoService {
     public void cadastrarInvestidor (InvestimentoDTO investidor){
         investidores.add(investidor);
     }
+
+    public List <InvestimentoDTO> retornarInvestidores(){
+        return investidores;
+    }
 }
