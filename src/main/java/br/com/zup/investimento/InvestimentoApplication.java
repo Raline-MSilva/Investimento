@@ -1,4 +1,4 @@
-package br.com.zup.Investimento;
+package br.com.zup.investimento;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

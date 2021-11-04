@@ -1,4 +1,4 @@
-package br.com.zup.Investimento;
+package br.com.zup.investimento;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

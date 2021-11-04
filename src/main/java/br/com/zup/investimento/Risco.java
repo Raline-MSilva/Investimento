@@ -1,4 +1,4 @@
-package br.com.zup.Investimento;
+package br.com.zup.investimento;
 
 public enum Risco {
 

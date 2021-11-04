@@ -1,6 +1,5 @@
-package br.com.zup.Investimento.Service;
-
-import br.com.zup.Investimento.Dto.InvestimentoDTO;
+package br.com.zup.investimento.service;
+import br.com.zup.investimento.dto.InvestimentoDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,11 +9,11 @@ import java.util.List;
 public class InvestimentoService {
     private List<InvestimentoDTO> investidores = new ArrayList<>();
 
-    public void cadastrarInvestidor (InvestimentoDTO investidor){
+    public void cadastrarInvestimento(InvestimentoDTO investidor) {
         investidores.add(investidor);
     }
 
-    public List <InvestimentoDTO> retornarInvestidores(){
+    public List<InvestimentoDTO> retornarInvestimentos() {
         return investidores;
     }
 }
