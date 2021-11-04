@@ -1,4 +1,5 @@
 package br.com.zup.investimento.service;
+import br.com.zup.investimento.Risco;
 import br.com.zup.investimento.dto.InvestimentoDTO;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +16,10 @@ public class InvestimentoService {
 
     public List<InvestimentoDTO> retornarInvestimentos() {
         return investidores;
+    }
+
+    public double calcularValorTotal (InvestimentoDTO investidor){
+        double calculo = investidor.getPeriodoDeAplicacaoMeses() * (investidor.getTipoDeRisco().getTaxaDeRetorno());
+        return calculo;
     }
 }
