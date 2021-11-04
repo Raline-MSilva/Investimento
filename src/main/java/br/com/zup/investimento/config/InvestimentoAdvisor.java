@@ -1,6 +1,6 @@
 package br.com.zup.investimento.config;
 
-import br.com.zup.investimento.dto.InvestimentoErroDTO;
+import br.com.zup.investimento.dto.MensagemDeErroDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,14 +15,20 @@ import java.util.List;
 public class InvestimentoAdvisor {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public List<InvestimentoErroDTO> manipularExcecoesDeValidacao(MethodArgumentNotValidException exception){
+    public List<MensagemDeErroDTO> manipularExcecoesDeValidacao(MethodArgumentNotValidException exception){
 
-        List<InvestimentoErroDTO> mensagens = new ArrayList<>();
+        List<MensagemDeErroDTO> mensagens = new ArrayList<>();
 
         for (FieldError fieldError : exception.getFieldErrors()){
-            mensagens.add(new InvestimentoErroDTO(fieldError.getDefaultMessage(), fieldError.getField()));
+            mensagens.add(new MensagemDeErroDTO(fieldError.getDefaultMessage(), fieldError.getField()));
         }
 
         return mensagens;
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public MensagemDeErroDTO mensagem(RuntimeException exception){
+        return new MensagemDeErroDTO("Risco não encontrado", "");
     }
 }

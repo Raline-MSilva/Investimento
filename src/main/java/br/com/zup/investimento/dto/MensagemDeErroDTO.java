@@ -1,10 +1,10 @@
 package br.com.zup.investimento.dto;
 
-public class InvestimentoErroDTO {
+public class MensagemDeErroDTO {
     private String mensagem;
     private String campo;
 
-    public InvestimentoErroDTO(String mensagem, String campo) {
+    public MensagemDeErroDTO(String mensagem, String campo) {
         this.mensagem = mensagem;
         this.campo = campo;
     }
