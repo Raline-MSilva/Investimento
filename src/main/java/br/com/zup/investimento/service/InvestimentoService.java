@@ -16,6 +16,7 @@ public class InvestimentoService {
 
     //cadastrar investimento
     public void cadastrarInvestimento(InvestimentoDTO investimento) {
+        consultarRisco(investimento);
         investimentos.add(investimento);
     }
 
