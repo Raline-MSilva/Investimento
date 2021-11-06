@@ -16,10 +16,20 @@ public class InvestimentoService {
 
     //cadastrar investimento
     public void cadastrarInvestimento(InvestimentoDTO investimento) {
-        consultarRisco(investimento);
         investimentos.add(investimento);
     }
 
+    //realizar investimento
+    public RetornoDTO realizarInvestimento (InvestimentoDTO investimento){
+        RetornoDTO retornoDTO = new RetornoDTO();
+        consultarRisco(investimento);
+        retornoDTO.setValorInvestido(investimento.getValorInvestido());
+        cadastrarInvestimento(investimento);
+        return retornoDTO;
+
+    }
+
+    //calcular invstimento
     public RetornoDTO calcularInvestimento(InvestimentoDTO investimento) {
         double taxaDeRendimento = investimento.getRisco().getTaxaDeRisco();
         double valorAplicado = investimento.getValorInvestido();
@@ -35,8 +45,10 @@ public class InvestimentoService {
         return new RetornoDTO(valorAplicado, valorDoLucro, valorTotal);
     }
 
+    //consultar risco
     public void consultarRisco(InvestimentoDTO investidorDto) {
         if (investidorDto.getValorInvestido() < 5000 && investidorDto.getRisco().equals(Risco.ALTO)) {
+            //tratar excecao
             throw new InvestimentoInvalido("Esse valor é invalido para o tipo de risco");
         }
     }
