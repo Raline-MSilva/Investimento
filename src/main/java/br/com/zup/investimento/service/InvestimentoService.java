@@ -1,7 +1,9 @@
 package br.com.zup.investimento.service;
 
+import br.com.zup.investimento.Risco;
 import br.com.zup.investimento.dto.InvestimentoDTO;
 import br.com.zup.investimento.dto.RetornoDTO;
+import br.com.zup.investimento.excecoes.InvestimentoInvalido;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,5 +32,11 @@ public class InvestimentoService {
             valorTotal = valorAplicado + valorDoLucro;
         }
         return new RetornoDTO(valorAplicado, valorDoLucro, valorTotal);
+    }
+
+    public void consultarRisco(InvestimentoDTO investidorDto) {
+        if (investidorDto.getValorInvestido() < 5000 && investidorDto.getRisco().equals(Risco.ALTO)) {
+            throw new InvestimentoInvalido("Esse valor é invalido para o tipo de risco");
+        }
     }
 }

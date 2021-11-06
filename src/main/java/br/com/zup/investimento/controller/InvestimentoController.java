@@ -1,6 +1,7 @@
 package br.com.zup.investimento.controller;
 
 import br.com.zup.investimento.dto.InvestimentoDTO;
+import br.com.zup.investimento.dto.RetornoDTO;
 import br.com.zup.investimento.service.InvestimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,7 +18,7 @@ public class InvestimentoController {
     private InvestimentoService investimentoService;
 
     @PutMapping
-    public void cadastrarInvestimento (@RequestBody @Valid InvestimentoDTO investimento){
-        investimentoService.cadastrarInvestimento(investimento);
+    public RetornoDTO cadastrarInvestimento (@RequestBody @Valid InvestimentoDTO investimento){
+        return investimentoService.calcularInvestimento(investimento);
     }
 }
