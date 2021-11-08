@@ -21,11 +21,11 @@ public class InvestimentoService {
     //cadastrar investimento
     public void cadastrarInvestimento(InvestimentoDTO investimento) {
         Investimento investimento1 = new Investimento();
-        investimento.setCpf(investimento.getCpf());
-        investimento.setEmail(investimento.getEmail());
-        investimento.setRisco(investimento.getRisco());
-        investimento.setValorInvestido(investimento.getValorInvestido());
-        investimento.setPeriodoDeAplicacaoMeses(investimento.getPeriodoDeAplicacaoMeses());
+        investimento1.setCpf(investimento.getCpf());
+        investimento1.setEmail(investimento.getEmail());
+        investimento1.setRisco(investimento.getRisco());
+        investimento1.setValorInvestido(investimento.getValorInvestido());
+        investimento1.setPeriodoDeAplicacaoMeses(investimento.getPeriodoDeAplicacaoMeses());
         simulacaoRepository.save(investimento1);
     }
 
@@ -34,6 +34,7 @@ public class InvestimentoService {
         RetornoDTO retornoDTO = new RetornoDTO();
         consultarRisco(investimento);
         retornoDTO.setValorInvestido(investimento.getValorInvestido());
+        calcularInvestimento(investimento);
         cadastrarInvestimento(investimento);
         return retornoDTO;
 
