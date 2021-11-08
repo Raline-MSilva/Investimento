@@ -4,6 +4,9 @@ import br.com.zup.investimento.Risco;
 import br.com.zup.investimento.dto.InvestimentoDTO;
 import br.com.zup.investimento.dto.RetornoDTO;
 import br.com.zup.investimento.excecoes.InvestimentoInvalido;
+import br.com.zup.investimento.simulacao.Investimento;
+import br.com.zup.investimento.simulacao.SimulacaoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,11 +15,18 @@ import java.util.List;
 @Service
 public class InvestimentoService {
 
-    List<InvestimentoDTO> investimentos = new ArrayList<>();
+    @Autowired
+    private SimulacaoRepository simulacaoRepository;
 
     //cadastrar investimento
     public void cadastrarInvestimento(InvestimentoDTO investimento) {
-        investimentos.add(investimento);
+        Investimento investimento1 = new Investimento();
+        investimento.setCpf(investimento.getCpf());
+        investimento.setEmail(investimento.getEmail());
+        investimento.setRisco(investimento.getRisco());
+        investimento.setValorInvestido(investimento.getValorInvestido());
+        investimento.setPeriodoDeAplicacaoMeses(investimento.getPeriodoDeAplicacaoMeses());
+        simulacaoRepository.save(investimento1);
     }
 
     //realizar investimento
